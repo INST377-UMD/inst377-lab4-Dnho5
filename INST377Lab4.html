@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INST377 - Lab 4</title>
+    <style>
+       
+        body {
+            background-color: #a6d9e8;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            justify-items: center;
+            margin: 0 auto;
+            width: 60%; 
+        }
+
+        .section {
+            background-color: #662d91;
+            border: 3px solid white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 350px;
+            height: 120px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section label {
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 140px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>INST377 - Lab 4</h1>
+
+    <div class="container">
+       
+        <div class="section">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" required>
+            <button onclick="alertMe()">Alert Me!</button>
+        </div>
+
+        
+        <div class="section">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+       
+        <div class="section">
+            <label for="textInput">Text Tester:</label>
+            <input type="text" id="textInput">
+            <button onclick="validateText()">Validate Text</button>
+        </div>
+
+        
+        <div class="section">
+            <button onclick="addText()">Add Text</button>
+        </div>
+    </div>
+
+    <script>
+       
+        function alertMe() {
+            const name = document.getElementById('nameInput').value;
+            if (name) {
+                alert(`Hi ${name}!`);
+            }
+        }
+
+        
+        let isBlue = true;
+        function changeColor() {
+            if (isBlue) {
+                document.body.style.backgroundColor = 'green';
+            } else {
+                document.body.style.backgroundColor = '#a6d9e8';
+            }
+            isBlue = !isBlue;
+        }
+
+       
+        function validateText() {
+            const text = document.getElementById('textInput').value;
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validation.test(text)) {
+                alert('Text contains special characters!');
+            } else {
+                alert('Text is valid!');
+            }
+        }
+
+        
+        function addText() {
+            const heading = document.querySelector('h1');
+            heading.innerHTML += ' Add Text';
+        }
+    </script>
+
+</body>
+</html>
